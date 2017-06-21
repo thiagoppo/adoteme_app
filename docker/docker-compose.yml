@@ -1,0 +1,23 @@
+version: '2'
+services:
+  api:
+    image: node:alpine
+    container_name: adoteme_app_api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../.:/adoteme_app
+    working_dir: /adoteme_app
+    entrypoint: /bin/sh -x docker/entrypoint.sh
+    env_file:
+      - ../.env
+    links:
+      - "db:mongo"
+  db:
+    image: mongo:3.2.8
+    container_name: adoteme_app_db    
+    volumes:
+      - /mnt/data/db:/data/db
+      - /mnt/data/configdb:/data/configdb     
+    ports:
+      - "27017:27017"
