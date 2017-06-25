@@ -1,5 +1,19 @@
 version: '2'
 services:
+  client:
+    image: node:alpine
+    container_name: adoteme_app_client
+    ports:
+      - "80:80"
+    volumes:
+      - ../client/.:/adoteme_app
+      - ./entrypoint-client.sh:/usr/local/bin/entrypoint-client.sh
+    working_dir: /adoteme_app
+    entrypoint: /bin/sh -x /usr/local/bin/entrypoint-client.sh
+    env_file:
+      - ../client/.env
+    links:
+      - "api:api"
   api:
     image: node:alpine
     container_name: adoteme_app_api
