@@ -17,6 +17,9 @@
     "express-validator": "^3.2.0",
     "body-parser": "^1.15.2",
     "mongoose": "^4.7.3",
-    "bluebird": "^3.4.6"
+    "bluebird": "^3.4.6",
+    "co-express": "^2.0.0",
+    "jsonwebtoken": "^7.4.1",
+    "bcrypt-nodejs": "^0.0.3"
   }
 }

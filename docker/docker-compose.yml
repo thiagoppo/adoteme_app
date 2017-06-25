@@ -6,11 +6,12 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ../.:/adoteme_app
+      - ../server/.:/adoteme_app
+      - ./entrypoint-server.sh:/adoteme_app/docker/entrypoint-server.sh
     working_dir: /adoteme_app
-    entrypoint: /bin/sh -x docker/entrypoint.sh
+    entrypoint: /bin/sh -x docker/entrypoint-server.sh
     env_file:
-      - ../.env
+      - ../server/.env
     links:
       - "db:mongo"
   db:
