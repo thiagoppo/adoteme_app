@@ -7,9 +7,9 @@ services:
       - "3000:3000"
     volumes:
       - ../server/.:/adoteme_app
-      - ./entrypoint-server.sh:/adoteme_app/docker/entrypoint-server.sh
+      - ./entrypoint-server.sh:/usr/local/bin/entrypoint-server.sh
     working_dir: /adoteme_app
-    entrypoint: /bin/sh -x docker/entrypoint-server.sh
+    entrypoint: /bin/sh -x /usr/local/bin/entrypoint-server.sh
     env_file:
       - ../server/.env
     links:
